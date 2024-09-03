@@ -12,7 +12,7 @@ The purpose of this repo is twofold; Although the primary reason is to create a 
 - [x] Using pgAdmin 4, create database `aspnet-blog`
 - [ ] Debug app in hot-reload mode
 - [ ] Install Npgsql.EntityFrameworkCore.PostgreSQL
-- [ ] Connect to PostGreSQL database
+- [x] Connect to PostGreSQL database
     - [ ] Add the connection string of the database created to `appsettings.Development.json`
     - [ ] [For our ER Diagram, initialize the Database Tables](https://jasonwatmore.com/net-7-postgres-connect-to-postgresql-database-with-dapper-in-c-and-aspnet-core)
 - [ ] Create a class for the User table (`Data/Model/User.cs`)
