@@ -88,6 +88,8 @@ If they are not allowed to edit it, show the same blog post, but with a notifica
 		- Shared via OneDrive
 - Auth
 	- [PasswordHasher](https://andrewlock.net/exploring-the-asp-net-core-identity-passwordhasher/)
+        - [Password Storage - OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
+        - [SecurityEssentials](https://github.com/johnstaveley/SecurityEssentials/blob/master/SecurityEssentials/App_Start/Startup.Auth.cs)
 
 ### Flashing Messages Example
 
