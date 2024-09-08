@@ -9,13 +9,22 @@ The purpose of this repo is twofold; Although the primary reason is to create a 
 ### Week One
 
 - [x] Create ASP.NET project
-- [x] Using pgAdmin 4, create database `aspnet-blog`
-- [ ] Debug app in hot-reload mode
-- [ ] Install Npgsql.EntityFrameworkCore.PostgreSQL
+- [x] Using `pgAdmin 4`, create database `aspnet-blog`
+- [x] Debug app in hot-reload mode
+- [x] Install Npgsql.EntityFrameworkCore.PostgreSQL
 - [x] Connect to PostGreSQL database
-    - [ ] Add the connection string of the database created to `appsettings.Development.json`
-    - [ ] [For our ER Diagram, initialize the Database Tables](https://jasonwatmore.com/net-7-postgres-connect-to-postgresql-database-with-dapper-in-c-and-aspnet-core)
-- [ ] Create a class for the User table (`Data/Model/User.cs`)
+    - [x] Add the connection string of the database created to `appsettings.Development.json`
+    - [x] Add the database connection in Program.cs as a dependency injection variable
+    - [x] For each table in the [ER Diagram](https://app.diagrams.net/#W760C84686D150D74%2F760C84686D150D74!s5250331e36ef482ab85114112bb1e0f2#%7B%22pageId%22%3A%22R2lEEEUBdFMjLlhIrx00%22%7D) create a `Models/TableName.cs` just with V1 fields
+        - [Sample class](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-8.0&tabs=visual-studio#the-student-entity)
+    - [x] Scaffold our database context by following [similar tutorial](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-8.0&tabs=visual-studio#scaffold-student-pages)
+- [ ] Create a sample `/debug/database-check` route that uses Npgsql to run a SQL "\dt"
+    - [Follow and Rename](https://www.npgsql.org/efcore/#defining-a-dbcontext)
+    - [Example of how to run commands](https://www.npgsql.org/doc/index.html)
+- [ ] [For our ER Diagram, initialize the Database Tables "seeding"](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-8.0&tabs=visual-studio#seed-the-database)
+    - Alternative resource unofficial https://jasonwatmore.com/net-7-postgres-connect-to-postgresql-database-with-dapper-in-c-and-aspnet-core
+    
+
 
 ### Week Two
 
@@ -80,6 +89,7 @@ If they are not allowed to edit it, show the same blog post, but with a notifica
 
 ## Resources
 
+- [ER Diagram](https://1drv.ms/u/c/760c84686d150d74/ER4zUFLvNipIuFEUESux4PIBFzf6-Ghb-JlRFe6iaq38vw?e=p0ykAW)
 - Database
 	- PostgreSQL
 		- [Npgsql](https://www.npgsql.org/doc/index.html)
@@ -90,6 +100,12 @@ If they are not allowed to edit it, show the same blog post, but with a notifica
 	- [PasswordHasher](https://andrewlock.net/exploring-the-asp-net-core-identity-passwordhasher/)
         - [Password Storage - OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
         - [SecurityEssentials](https://github.com/johnstaveley/SecurityEssentials/blob/master/SecurityEssentials/App_Start/Startup.Auth.cs)
+
+To eliminate the warnings from nullable reference types, remove the following line from the .csproj file:
+
+```xml
+<Nullable>enable</Nullable>
+```
 
 ### Flashing Messages Example
 

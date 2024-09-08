@@ -1,6 +1,7 @@
 using AspNetWebAppTemplate.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<AspNetWebAppTemplateContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("AspNetWebAppTemplateContext") ?? throw new InvalidOperationException("Connection string 'AspNetWebAppTemplateContext' not found.")));
 
 var app = builder.Build();
 
@@ -27,6 +30,17 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+// create database if it doesn't exist
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<AspNetWebAppTemplateContext>();
+    context.Database.EnsureCreated();
+    // DbInitializer.Initialize(context);
+}
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
