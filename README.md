@@ -18,13 +18,13 @@ The purpose of this repo is twofold; Although the primary reason is to create a 
     - [x] For each table in the [ER Diagram](https://app.diagrams.net/#W760C84686D150D74%2F760C84686D150D74!s5250331e36ef482ab85114112bb1e0f2#%7B%22pageId%22%3A%22R2lEEEUBdFMjLlhIrx00%22%7D) create a `Models/TableName.cs` just with V1 fields
         - [Sample class](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-8.0&tabs=visual-studio#the-student-entity)
     - [x] Scaffold our database context by following [similar tutorial](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-8.0&tabs=visual-studio#scaffold-student-pages)
-- [ ] Create a sample `/debug/database-check` route that uses Npgsql to run a SQL "\dt"
-    - [Follow and Rename](https://www.npgsql.org/efcore/#defining-a-dbcontext)
-    - [Example of how to run commands](https://www.npgsql.org/doc/index.html)
+- ~~Create a sample `/debug/database-check` route that uses Npgsql to run a SQL "\dt"~~
+    - ~~[Follow and Rename](https://www.npgsql.org/efcore/#defining-a-dbcontext)~~
+    - ~~[Example of how to run commands](https://www.npgsql.org/doc/index.html)~~
+- [x] Ensure database exists
+- [x] Update DB context to link our models to tables in the database [example](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-8.0&tabs=visual-studio#update-the-database-context-class) 
 - [ ] [For our ER Diagram, initialize the Database Tables "seeding"](https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-8.0&tabs=visual-studio#seed-the-database)
     - Alternative resource unofficial https://jasonwatmore.com/net-7-postgres-connect-to-postgresql-database-with-dapper-in-c-and-aspnet-core
-    
-
 
 ### Week Two
 

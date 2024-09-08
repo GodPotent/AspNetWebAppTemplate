@@ -14,14 +14,17 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<AspNetWebAppTemplateContext>(options =>
+builder.Services.AddDbContext<BlogDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("AspNetWebAppTemplateContext") ?? throw new InvalidOperationException("Connection string 'AspNetWebAppTemplateContext' not found.")));
+
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
 }
 else
@@ -36,9 +39,9 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
 
-    var context = services.GetRequiredService<AspNetWebAppTemplateContext>();
+    var context = services.GetRequiredService<BlogDbContext>();
     context.Database.EnsureCreated();
-    // DbInitializer.Initialize(context);
+     DbInitializer.Initialize(context);
 }
 
 
